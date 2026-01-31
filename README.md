@@ -28,7 +28,9 @@ Features:
 
 ## Usage
 
-### check-disk-usage
+### Checks
+
+#### check-disk-usage
 
 Check disk usage against warning and critical thresholds.
 
@@ -69,7 +71,120 @@ Check specific mount points:
 check-disk-usage --warning 80 --critical 90 --include-paths /,/home
 ```
 
-### metrics-disk-usage
+#### check-fstab-mounts
+
+Verify that filesystems defined in `/etc/fstab` are actually mounted.
+
+```bash
+check-fstab-mounts
+```
+
+**Options:**
+
+```
+  -f, --fstab-path string       Path to fstab file (default "/etc/fstab")
+```
+
+**Examples:**
+
+Check default fstab:
+```bash
+check-fstab-mounts
+```
+
+Check custom fstab file:
+```bash
+check-fstab-mounts --fstab-path /etc/fstab.backup
+```
+
+#### check-smart
+
+Check SMART disk health status using smartctl.
+
+```bash
+check-smart --devices /dev/sda,/dev/sdb
+```
+
+**Options:**
+
+```
+  -d, --devices strings         Comma-separated list of devices to check (e.g., /dev/sda,/dev/sdb)
+  -s, --smartctl-path string    Path to smartctl binary (default "smartctl")
+  -c, --config-file string      Path to JSON config file with device list (default "/etc/sensu/conf.d/smart.json")
+```
+
+**Examples:**
+
+Check specific devices:
+```bash
+check-smart --devices /dev/sda,/dev/sdb
+```
+
+Auto-detect devices:
+```bash
+check-smart
+```
+
+Use config file:
+```bash
+check-smart --config-file /etc/sensu/conf.d/smart.json
+```
+
+**Note:** Requires `smartctl` (from smartmontools package) and typically needs sudo permissions.
+
+#### check-smart-status
+
+Check SMART offline test status.
+
+```bash
+check-smart-status --devices /dev/sda
+```
+
+**Options:**
+
+```
+  -d, --devices strings         Comma-separated list of devices to check
+  -s, --smartctl-path string    Path to smartctl binary (default "smartctl")
+  -c, --config-file string      Path to JSON config file with device list (default "/etc/sensu/conf.d/smart.json")
+```
+
+**Note:** Requires `smartctl` and typically needs sudo permissions.
+
+#### check-smart-tests
+
+Check SMART self-test status and verify tests are running within expected intervals.
+
+```bash
+check-smart-tests --devices /dev/sda --short-test-interval 24 --long-test-interval 336
+```
+
+**Options:**
+
+```
+  -d, --devices strings              Comma-separated list of devices to check
+  -s, --smartctl-path string         Path to smartctl binary (default "smartctl")
+  -c, --config-file string           Path to JSON config file with device list (default "/etc/sensu/conf.d/smart.json")
+  -l, --short-test-interval int      Maximum hours since last short test (default 24, 0 to disable)
+  -t, --long-test-interval int       Maximum hours since last extended test (default 336, 0 to disable)
+```
+
+**Examples:**
+
+Check with default intervals (24h for short, 14 days for long):
+```bash
+check-smart-tests --devices /dev/sda,/dev/sdb
+```
+
+Custom intervals:
+```bash
+check-smart-tests --devices /dev/sda --short-test-interval 12 --long-test-interval 168
+```
+
+**Note:** Requires `smartctl` and typically needs sudo permissions.
+
+### Metrics
+
+#### metrics-disk-usage
 
 Output disk usage metrics in Graphite plaintext format.
 
@@ -104,9 +219,9 @@ Output metrics only for ext4 filesystems:
 metrics-disk-usage --include-types ext4
 ```
 
-**Metrics Output:**
+**Output format:**
 
-The plugin outputs the following metrics for each filesystem:
+All metrics commands output in Graphite plaintext format with the following metrics per filesystem:
 - `used_bytes` - Bytes used
 - `total_bytes` - Total bytes
 - `free_bytes` - Bytes free

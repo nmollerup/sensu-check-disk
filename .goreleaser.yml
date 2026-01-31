@@ -60,6 +60,174 @@ builds:
       - windows_386
       - windows_amd64
 
+  - main: ./cmd/metrics-disk-capacity/main.go
+    id: "metrics-disk-capacity"
+    env:
+    - CGO_ENABLED=0
+    ldflags: '-s -w -X github.com/sensu-community/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu-community/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu-community/sensu-plugin-sdk/version.date={{.Date}}'
+    binary: bin/metrics-disk-capacity
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - 386
+      - arm
+      - arm64
+    goarm:
+      - 5
+      - 6
+      - 7
+    targets:
+      - darwin_amd64
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/metrics-disk/main.go
+    id: "metrics-disk"
+    env:
+    - CGO_ENABLED=0
+    ldflags: '-s -w -X github.com/sensu-community/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu-community/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu-community/sensu-plugin-sdk/version.date={{.Date}}'
+    binary: bin/metrics-disk
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - 386
+      - arm
+      - arm64
+    goarm:
+      - 5
+      - 6
+      - 7
+    targets:
+      - darwin_amd64
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+      - windows_386
+      - windows_amd64
+
+  - main: ./cmd/check-fstab-mounts/main.go
+    id: "check-fstab-mounts"
+    env:
+    - CGO_ENABLED=0
+    ldflags: '-s -w -X github.com/sensu-community/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu-community/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu-community/sensu-plugin-sdk/version.date={{.Date}}'
+    binary: bin/check-fstab-mounts
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - 386
+      - arm
+      - arm64
+    goarm:
+      - 5
+      - 6
+      - 7
+    targets:
+      - darwin_amd64
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+
+  - main: ./cmd/check-smart/main.go
+    id: "check-smart"
+    env:
+    - CGO_ENABLED=0
+    ldflags: '-s -w -X github.com/sensu-community/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu-community/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu-community/sensu-plugin-sdk/version.date={{.Date}}'
+    binary: bin/check-smart
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - 386
+      - arm
+      - arm64
+    goarm:
+      - 5
+      - 6
+      - 7
+    targets:
+      - darwin_amd64
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+
+  - main: ./cmd/check-smart-status/main.go
+    id: "check-smart-status"
+    env:
+    - CGO_ENABLED=0
+    ldflags: '-s -w -X github.com/sensu-community/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu-community/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu-community/sensu-plugin-sdk/version.date={{.Date}}'
+    binary: bin/check-smart-status
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - 386
+      - arm
+      - arm64
+    goarm:
+      - 5
+      - 6
+      - 7
+    targets:
+      - darwin_amd64
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+
+  - main: ./cmd/check-smart-tests/main.go
+    id: "check-smart-tests"
+    env:
+    - CGO_ENABLED=0
+    ldflags: '-s -w -X github.com/sensu-community/sensu-plugin-sdk/version.version={{.Version}} -X github.com/sensu-community/sensu-plugin-sdk/version.commit={{.Commit}} -X github.com/sensu-community/sensu-plugin-sdk/version.date={{.Date}}'
+    binary: bin/check-smart-tests
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - 386
+      - arm
+      - arm64
+    goarm:
+      - 5
+      - 6
+      - 7
+    targets:
+      - darwin_amd64
+      - linux_386
+      - linux_amd64
+      - linux_arm_5
+      - linux_arm_6
+      - linux_arm_7
+      - linux_arm64
+
 checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_sha512-checksums.txt"
   algorithm: sha512
