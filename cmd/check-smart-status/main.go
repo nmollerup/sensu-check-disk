@@ -111,7 +111,7 @@ func executeCheck(event *corev2.Event) (int, error) {
 
 		// Check for offline test status
 		status := parseOfflineTestStatus(outputStr)
-		
+
 		switch status {
 		case "completed without error":
 			continue
@@ -120,8 +120,8 @@ func executeCheck(event *corev2.Event) (int, error) {
 		case "":
 			warnings = append(warnings, fmt.Sprintf("%s: No offline test status found", device))
 		default:
-			if strings.Contains(strings.ToLower(status), "fail") || 
-			   strings.Contains(strings.ToLower(status), "error") {
+			if strings.Contains(strings.ToLower(status), "fail") ||
+				strings.Contains(strings.ToLower(status), "error") {
 				failures = append(failures, fmt.Sprintf("%s: %s", device, status))
 			} else {
 				warnings = append(warnings, fmt.Sprintf("%s: %s", device, status))

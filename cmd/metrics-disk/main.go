@@ -120,7 +120,7 @@ func executeMetric(event *corev2.Event) error {
 		fmt.Printf("%s.%s.used %d %d\n", plugin.Scheme, sanitizedMount, usage.Used, timestamp)
 		fmt.Printf("%s.%s.free %d %d\n", plugin.Scheme, sanitizedMount, usage.Free, timestamp)
 		fmt.Printf("%s.%s.percent_used %.2f %d\n", plugin.Scheme, sanitizedMount, usage.UsedPercent, timestamp)
-		
+
 		// Inode metrics
 		if usage.InodesTotal > 0 {
 			fmt.Printf("%s.%s.inodes_total %d %d\n", plugin.Scheme, sanitizedMount, usage.InodesTotal, timestamp)

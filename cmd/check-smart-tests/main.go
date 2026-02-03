@@ -139,13 +139,13 @@ func executeCheck(event *corev2.Event) (int, error) {
 
 		// Check short test interval
 		if plugin.ShortTestInterval > 0 && shortTestAge > plugin.ShortTestInterval {
-			warnings = append(warnings, fmt.Sprintf("%s: Short test not run in %d hours (threshold: %d)", 
+			warnings = append(warnings, fmt.Sprintf("%s: Short test not run in %d hours (threshold: %d)",
 				device, shortTestAge, plugin.ShortTestInterval))
 		}
 
 		// Check long test interval
 		if plugin.LongTestInterval > 0 && longTestAge > plugin.LongTestInterval {
-			warnings = append(warnings, fmt.Sprintf("%s: Extended test not run in %d hours (threshold: %d)", 
+			warnings = append(warnings, fmt.Sprintf("%s: Extended test not run in %d hours (threshold: %d)",
 				device, longTestAge, plugin.LongTestInterval))
 		}
 	}
@@ -186,7 +186,7 @@ func parseTestLog(output string) (shortTestAge int, longTestAge int, failures []
 		// Format: # 1  Short offline    Completed without error       00%     12345         -
 		re := regexp.MustCompile(`#\s+\d+\s+(Short|Extended|Long)\s+\w+\s+(.*?)\s+\d+%\s+(\d+)`)
 		matches := re.FindStringSubmatch(line)
-		
+
 		if len(matches) > 3 {
 			testType := matches[1]
 			status := strings.TrimSpace(matches[2])
@@ -196,8 +196,8 @@ func parseTestLog(output string) (shortTestAge int, longTestAge int, failures []
 			age := lifeHours
 
 			// Check for failures
-			if strings.Contains(strings.ToLower(status), "fail") || 
-			   strings.Contains(strings.ToLower(status), "error") {
+			if strings.Contains(strings.ToLower(status), "fail") ||
+				strings.Contains(strings.ToLower(status), "error") {
 				failures = append(failures, fmt.Sprintf("%s test at %d hours", testType, lifeHours))
 				continue
 			}

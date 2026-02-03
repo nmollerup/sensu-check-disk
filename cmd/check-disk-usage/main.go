@@ -11,11 +11,11 @@ import (
 // Config represents the check plugin config
 type Config struct {
 	sensu.PluginConfig
-	Warning     float64
-	Critical    float64
-	IgnorePaths []string
+	Warning      float64
+	Critical     float64
+	IgnorePaths  []string
 	IncludePaths []string
-	IgnoreTypes []string
+	IgnoreTypes  []string
 	IncludeTypes []string
 }
 

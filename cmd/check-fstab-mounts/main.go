@@ -80,7 +80,7 @@ func executeCheck(event *corev2.Event) (int, error) {
 		if entry.FSType == "swap" || strings.Contains(entry.Options, "bind") {
 			continue
 		}
-		
+
 		// Skip comments and special entries
 		if strings.HasPrefix(entry.MountPoint, "#") || entry.MountPoint == "" {
 			continue
