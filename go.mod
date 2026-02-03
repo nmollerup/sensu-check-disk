@@ -1,6 +1,12 @@
 module github.com/nmollerup/sensu-check-disk
 
-go 1.22.2
+go 1.23.0
+
+require (
+	github.com/sensu/core/v2 v2.16.1
+	github.com/sensu/sensu-plugin-sdk v0.19.0
+	github.com/shirou/gopsutil/v3 v3.24.5
+)
 
 require (
 	github.com/blang/semver/v4 v4.0.0 // indirect
@@ -21,12 +27,8 @@ require (
 	github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c // indirect
 	github.com/robertkrimen/otto v0.0.0-20221006114523-201ab5b34f52 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
-	github.com/sensu/core/v2 v2.16.1 // indirect
 	github.com/sensu/sensu-api-tools v0.1.0 // indirect
-	github.com/sensu/sensu-go/api/core/v2 v2.16.0 // indirect
 	github.com/sensu/sensu-licensing/v2 v2.2.1 // indirect
-	github.com/sensu/sensu-plugin-sdk v0.19.0 // indirect
-	github.com/shirou/gopsutil/v3 v3.24.5 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
 	github.com/spf13/afero v1.1.2 // indirect
 	github.com/spf13/cast v1.3.0 // indirect
@@ -37,9 +39,9 @@ require (
 	github.com/subosito/gotenv v1.2.0 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.5 // indirect
-	golang.org/x/net v0.7.0 // indirect
-	golang.org/x/sys v0.20.0 // indirect
-	golang.org/x/text v0.7.0 // indirect
+	golang.org/x/net v0.38.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
 	google.golang.org/genproto v0.0.0-20230110181048-76db0878b65f // indirect
 	google.golang.org/grpc v1.53.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
