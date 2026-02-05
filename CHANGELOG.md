@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.5] - 2026-02-05
+
 ### Added
 - Unit tests for check-fstab-mounts
 
@@ -14,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Skip fstab entries with `null` as mountpoint
 - Skip fstab entries with `noauto` mount option
 
-## [0.1.3] - 2024-01-01
+## [0.1.3]
 
 ### Added
 - Bonsai asset configuration (.bonsai.yml)
