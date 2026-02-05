@@ -76,8 +76,8 @@ func executeCheck(event *corev2.Event) (int, error) {
 	// Check which fstab entries are not mounted
 	var unmounted []string
 	for _, entry := range entries {
-		// Skip swap, bind mounts, and special filesystems
-		if entry.FSType == "swap" || strings.Contains(entry.Options, "bind") {
+		// Skip swap, bind mounts, noauto, and special filesystems
+		if entry.FSType == "swap" || strings.Contains(entry.Options, "bind") || strings.Contains(entry.Options, "noauto") {
 			continue
 		}
 
