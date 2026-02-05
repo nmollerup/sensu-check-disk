@@ -81,8 +81,8 @@ func executeCheck(event *corev2.Event) (int, error) {
 			continue
 		}
 
-		// Skip comments and special entries
-		if strings.HasPrefix(entry.MountPoint, "#") || entry.MountPoint == "" {
+		// Skip comments, null mounts, and special entries
+		if strings.HasPrefix(entry.MountPoint, "#") || entry.MountPoint == "" || entry.MountPoint == "null" {
 			continue
 		}
 
