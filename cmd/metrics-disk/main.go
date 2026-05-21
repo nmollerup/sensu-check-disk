@@ -69,18 +69,18 @@ var (
 )
 
 func main() {
-	metric := sensu.NewGoHandler(&plugin.PluginConfig, options, checkArgs, executeMetric)
+	metric := sensu.NewCheck(&plugin.PluginConfig, options, checkArgs, executeMetric, false)
 	metric.Execute()
 }
 
-func checkArgs(event *corev2.Event) error {
-	return nil
+func checkArgs(event *corev2.Event) (int, error) {
+	return sensu.CheckStateOK, nil
 }
 
-func executeMetric(event *corev2.Event) error {
+func executeMetric(event *corev2.Event) (int, error) {
 	partitions, err := disk.Partitions(false)
 	if err != nil {
-		return fmt.Errorf("failed to get disk partitions: %v", err)
+		return sensu.CheckStateCritical, fmt.Errorf("failed to get disk partitions: %v", err)
 	}
 
 	timestamp := time.Now().Unix()
@@ -131,7 +131,7 @@ func executeMetric(event *corev2.Event) error {
 		}
 	}
 
-	return nil
+	return sensu.CheckStateOK, nil
 }
 
 func shouldIgnoreType(fstype string) bool {
