@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.6] - 2026-05-21
+
+### Fixed
+- metrics-disk, metrics-disk-usage, and metrics-disk-capacity now run correctly as Sensu checks; previously used `NewGoHandler` which read stdin and failed with "unexpected end of JSON input"
+
+### Changed
+- Updated .goreleaser.yml to version 2 format and replaced deprecated `archives.format` with `archives.formats`
+
 ## [0.1.5] - 2026-02-05
 
 ### Added
